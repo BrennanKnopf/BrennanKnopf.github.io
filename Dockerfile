@@ -1,9 +1,11 @@
-FROM nginx:latest as build
+# FROM node:16-bullseye as build
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY . ./
+# COPY ./ ./
+
+FROM nginx:stable-alpine as prod
 
 COPY ./ /usr/share/nginx/html
 EXPOSE 80
-CMD [ "nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
