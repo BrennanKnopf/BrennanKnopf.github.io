@@ -1,11 +1,11 @@
-FROM nginx:latest
+FROM nginx:latest as build
 
 WORKDIR /app
 
-
+ENV PATH /app/node_modules/.bin:$PATH 
 COPY . ./
 
-
+FROM nginx:stable-alpine as prod
+COPY  --from=build ./ /usr/share/nginx/html
 EXPOSE 80
-COPY  ./ /usr/share/nginx/html
 CMD [ "nginx", "-g", "daemon off;"]
