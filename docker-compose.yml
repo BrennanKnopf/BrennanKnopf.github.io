@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+
+  prod-web:
+    container_name: portfoliowebsite-aws
+    image: brennanknopf/portfoliowebsite:latest
+    ports:
+      - '80:80'
